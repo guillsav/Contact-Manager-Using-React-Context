@@ -1,21 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import {Card, CardHeader, CardBody, CardText} from 'reactstrap';
+import styled from 'styled-components';
 
-class Contact extends Component {
-  render() {
-    const {name, email, phone} = this.props;
-    return (
-      <div>
-        <h4 />
-        <ul>
-          <li>{name}</li>
-          <li>{email}</li>
-          <li>{phone}</li>
-        </ul>
-      </div>
-    );
-  }
-}
+const CardDiv = styled.div`
+  padding: 30px 15%;
+`;
+
+const Contact = props => {
+  const {name, email, phone} = props;
+  return (
+    <CardDiv>
+      <Card xs="3">
+        <CardHeader tag="h3">{name}</CardHeader>
+        <CardBody>
+          <CardText tag="h6">{email}</CardText>
+          <CardText tag="h6">{phone}</CardText>
+        </CardBody>
+      </Card>
+    </CardDiv>
+  );
+};
 
 Contact.propTypes = {
   name: PropTypes.string.isRequired,
