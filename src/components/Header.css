@@ -1,0 +1,28 @@
+.Header {
+  width: 100%;
+  height: 60px;
+  background: #dc3545;
+  color: #fff;
+}
+
+.Header .container {
+  margin: 0 auto;
+  padding: 10px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+}
+
+.Header .container nav {
+  display: flex;
+  align-items: center;
+}
+
+.Header .container nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  opacity: 0.7;
+  font-size: 1.6rem;
+}

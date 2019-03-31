@@ -1,31 +1,62 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card, CardHeader, CardBody, CardText} from 'reactstrap';
-import styled from 'styled-components';
+import {Consumer} from '../context';
 
-const CardDiv = styled.div`
-  padding: 30px 15%;
-`;
+import './Contact.css';
 
-const Contact = props => {
-  const {name, email, phone} = props;
-  return (
-    <CardDiv>
-      <Card xs="3">
-        <CardHeader tag="h3">{name}</CardHeader>
-        <CardBody>
-          <CardText tag="h6">{email}</CardText>
-          <CardText tag="h6">{phone}</CardText>
-        </CardBody>
-      </Card>
-    </CardDiv>
-  );
-};
+class Contact extends React.Component {
+  state = {
+    showContactInfo: false
+  };
+  onDeleteClick = (id, dispatch) => {
+    dispatch({type: 'DELETE_CONTACT', payload: id});
+  };
+
+  render() {
+    const {id, name, email, phone} = this.props.contact;
+    const {showContactInfo} = this.state;
+    return (
+      <Consumer>
+        {value => {
+          const {dispatch} = value;
+          return (
+            <div className="Card">
+              <div className="contact-name">
+                <h4>{name} </h4>
+                <i
+                  onClick={() =>
+                    this.setState({
+                      showContactInfo: !this.state.showContactInfo
+                    })
+                  }
+                  className="fas fa-sort-down"
+                  style={{cursor: 'pointer'}}
+                />
+              </div>
+              <div className="remove">
+                <button>
+                  <i
+                    onClick={() => this.onDeleteClick(id, dispatch)}
+                    className="fas fa-times"
+                  />
+                </button>
+              </div>
+              {showContactInfo ? (
+                <div className="card-content">
+                  <p>{email}</p>
+                  <p>{phone}</p>
+                </div>
+              ) : null}
+            </div>
+          );
+        }}
+      </Consumer>
+    );
+  }
+}
 
 Contact.propTypes = {
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired
+  contact: PropTypes.object
 };
 
 export default Contact;
