@@ -10,6 +10,9 @@ class Contacts extends Component {
           const {contacts} = value;
           return (
             <React.Fragment>
+              <h2 className="header-2">
+                <span className="stand-out">Contact </span>List
+              </h2>
               {contacts.map(contact => {
                 return <Contact key={contact.id} contact={contact} />;
               })}

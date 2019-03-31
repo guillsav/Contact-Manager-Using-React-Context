@@ -53,6 +53,8 @@ class AddContact extends Component {
       phone: '',
       errors: {}
     });
+
+    this.props.history.push('/');
   };
 
   render() {
@@ -64,7 +66,9 @@ class AddContact extends Component {
           return (
             <div className="AddContact">
               <div className="card-title">
-                <h4>Add Contact</h4>
+                <h2 className="header-2">
+                  <span className="stand-out">Add </span>Contact
+                </h2>
               </div>
               <form onSubmit={this.onFormSubmit.bind(this, dispatch)}>
                 <div className="form-content">

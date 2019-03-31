@@ -21,6 +21,7 @@
 }
 
 .Header .container nav {
+  width: 230px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,4 +33,9 @@
   font-weight: 600;
   opacity: 0.7;
   font-size: 1.6rem;
+  transition: all 0.2s;
+}
+
+.Header .container nav a:hover {
+  opacity: 1;
 }

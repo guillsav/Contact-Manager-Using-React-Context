@@ -18,11 +18,15 @@
   border-radius: 4px 4px 0 0;
 }
 
-.card-title h4 {
+.AddContact .header-2 {
+  margin: 5px;
+}
+
+/* .card-title  {
   font-size: 1.8rem;
   margin: 10px 0;
   font-weight: 500;
-}
+} */
 
 .AddContact .form-content {
   display: flex;
