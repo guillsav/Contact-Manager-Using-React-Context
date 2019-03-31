@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Consumer} from '../context';
+import {Consumer} from '../../context';
 
 import './Contact.css';
 
@@ -29,15 +29,14 @@ class Contact extends React.Component {
                       showContactInfo: !this.state.showContactInfo
                     })
                   }
-                  className="fas fa-sort-down"
-                  style={{cursor: 'pointer'}}
+                  className="fas fa-sort-down fa-lg"
                 />
               </div>
               <div className="remove">
                 <button>
                   <i
                     onClick={() => this.onDeleteClick(id, dispatch)}
-                    className="fas fa-times"
+                    className="fas fa-times fa-lg"
                   />
                 </button>
               </div>
