@@ -1,0 +1,14 @@
+.form-content .is-invalid {
+  border: 1px solid #dc3545;
+  background: #dc354625;
+}
+
+.form-content .is-invalid::placeholder {
+  color: #dc3545;
+}
+
+.error-feedback {
+  color: #dc3545;
+  font-size: 1.3rem;
+  margin-top: 5px;
+}

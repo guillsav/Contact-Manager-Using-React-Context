@@ -20,7 +20,7 @@ class Contact extends React.Component {
         {value => {
           const {dispatch} = value;
           return (
-            <div className="Card">
+            <div className={`Card ${showContactInfo ? 'open' : ''}`}>
               <div className="contact-name">
                 <h4>{name} </h4>
                 <i
