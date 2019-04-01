@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Consumer} from '../../context';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 import './Contact.css';
@@ -10,8 +11,12 @@ class Contact extends React.Component {
     showContactInfo: false
   };
   onDeleteClick = async (id, dispatch) => {
-    await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
-    dispatch({type: 'DELETE_CONTACT', payload: id});
+    try {
+      await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+      dispatch({type: 'DELETE_CONTACT', payload: id});
+    } catch (e) {
+      dispatch({type: 'DELETE_CONTACT', payload: id});
+    }
 
     // With fetch
     // fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
@@ -39,10 +44,15 @@ class Contact extends React.Component {
                   className="fas fa-sort-down fa-lg"
                 />
               </div>
-              <div className="remove">
-                <button onClick={() => this.onDeleteClick(id, dispatch)}>
-                  Delete
-                </button>
+              <div className="controls">
+                <div className="edit">
+                  <Link to={`contact/edit/${id}`}>Edit</Link>
+                </div>
+                <div className="remove">
+                  <button onClick={() => this.onDeleteClick(id, dispatch)}>
+                    Delete
+                  </button>
+                </div>
               </div>
               {showContactInfo ? (
                 <div className="card-content">
