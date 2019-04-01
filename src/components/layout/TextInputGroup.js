@@ -34,9 +34,9 @@ TextInputGroup.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  Placeholder: PropTypes.string.isRequired,
+  Placeholder: PropTypes.string,
   type: PropTypes.string.isRequired,
-  onInputChange: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func,
   error: PropTypes.string
 };
 

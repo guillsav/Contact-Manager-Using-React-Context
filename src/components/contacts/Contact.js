@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Consumer} from '../../context';
+import axios from 'axios';
 
 import './Contact.css';
 
@@ -8,8 +9,14 @@ class Contact extends React.Component {
   state = {
     showContactInfo: false
   };
-  onDeleteClick = (id, dispatch) => {
+  onDeleteClick = async (id, dispatch) => {
+    await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
     dispatch({type: 'DELETE_CONTACT', payload: id});
+
+    // With fetch
+    // fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+    //   method: 'DELETE'
+    // }).then(response => dispatch({type: 'DELETE_CONTACT', payload: id}));
   };
 
   render() {
@@ -33,11 +40,8 @@ class Contact extends React.Component {
                 />
               </div>
               <div className="remove">
-                <button>
-                  <i
-                    onClick={() => this.onDeleteClick(id, dispatch)}
-                    className="fas fa-times fa-lg"
-                  />
+                <button onClick={() => this.onDeleteClick(id, dispatch)}>
+                  Delete
                 </button>
               </div>
               {showContactInfo ? (
